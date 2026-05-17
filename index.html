@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kaka Hotel – Minchinabad's Favourite Dhaba</title>
+<meta name="description" content="Kaka Hotel in Minchinabad – serving fresh, home-style Pakistani food 24/7 on the Bahawalnagar Road. Daal, Mutton, Karahi and much more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --saffron: #E67E22;
+    --saffron-dark: #B05B0A;
+    --saffron-light: #F5A623;
+    --cream: #FDF6EC;
+    --cream-dark: #F2E5CC;
+    --charcoal: #1A1A1A;
+    --charcoal-soft: #2E2E2E;
+    --muted: #6B5C4C;
+    --white: #FFFFFF;
+    --section-gap: 100px;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(26,26,26,0.96);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s;
+  }
+
+  .logo {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    color: var(--saffron-light);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .logo span { color: var(--white); font-style: italic; font-size: 0.85em; display: block; line-height: 1; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--saffron-light); }
+
+  .nav-cta {
+    background: var(--saffron);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--saffron-dark) !important; color: var(--white) !important; }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--charcoal);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(230,126,34,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse at 75% 30%, rgba(245,166,35,0.12) 0%, transparent 50%),
+      linear-gradient(160deg, #1a1a1a 0%, #2a1a08 60%, #1a1a1a 100%);
+  }
+
+  /* subtle grain texture */
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    padding: 0 1.5rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--saffron-light);
+    border: 1px solid rgba(245,166,35,0.4);
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-content h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 1.2rem;
+  }
+  .hero-content h1 em {
+    color: var(--saffron-light);
+    font-style: italic;
+  }
+
+  .hero-content p {
+    font-size: 1.08rem;
+    color: rgba(255,255,255,0.68);
+    max-width: 540px;
+    margin: 0 auto 2.2rem;
+    font-weight: 300;
+  }
+
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary { background: var(--saffron); color: var(--white); }
+  .btn-primary:hover { background: var(--saffron-dark); transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.4); color: var(--white); }
+  .btn-outline:hover { border-color: var(--saffron-light); color: var(--saffron-light); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: var(--section-gap) 5%; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 40px 5%;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    flex: 1;
+    min-width: 160px;
+    max-width: 220px;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: var(--font-head);
+    font-size: 2.4rem;
+    color: var(--saffron-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-image-stack {
+    position: relative;
+    height: 460px;
+  }
+  .about-img-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 76%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .about-img-accent {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60%;
+    height: 55%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 6px solid var(--white);
+  }
+  .about-badge-float {
+    position: absolute;
+    top: 52%;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    background: var(--saffron);
+    color: var(--white);
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 3;
+    line-height: 1.3;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 24px rgba(230,126,34,0.35);
+  }
+  .about-badge-float strong { font-size: 1.7rem; display: block; line-height: 1; }
+
+  .about-text .section-desc { margin-bottom: 1.6rem; }
+  .about-features { list-style: none; margin-top: 1.4rem; }
+  .about-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--charcoal-soft);
+  }
+  .about-features li::before {
+    content: '';
+    display: inline-block;
+    width: 22px; height: 22px; min-width: 22px;
+    background: var(--saffron);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* ── MENU ── */
+  #menu { background: var(--cream); }
+  .menu-header { max-width: 1100px; margin: 0 auto 3rem; }
+
+  .menu-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.6rem;
+  }
+  .menu-tab {
+    padding: 9px 22px;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 30px;
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .menu-tab.active, .menu-tab:hover {
+    background: var(--saffron);
+    border-color: var(--saffron);
+    color: var(--white);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .menu-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .menu-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); }
+
+  .menu-card-img {
+    width: 100%; height: 190px;
+    object-fit: cover;
+    background: var(--cream-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .menu-card-body { padding: 1.2rem 1.4rem; }
+  .menu-card-body h3 {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+    color: var(--charcoal);
+  }
+  .menu-card-body p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .menu-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .price {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    color: var(--saffron-dark);
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 30px;
+    background: var(--cream-dark);
+    color: var(--muted);
+  }
+  .tag.popular { background: rgba(230,126,34,0.14); color: var(--saffron-dark); }
+
+  /* ── SERVICES ── */
+  #services { background: var(--charcoal); }
+  #services .section-title { color: var(--white); }
+  #services .section-label { color: var(--saffron-light); }
+  #services .section-desc { color: rgba(255,255,255,0.55); }
+
+  .services-header { max-width: 1100px; margin: 0 auto 3rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 2rem 1.6rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .service-card:hover {
+    background: rgba(230,126,34,0.1);
+    border-color: rgba(230,126,34,0.3);
+  }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.1rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--cream-dark); }
+  .testimonials-header { text-align: center; margin-bottom: 3rem; }
+  .testimonials-header .section-desc { margin: 0 auto; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .review-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.8rem 1.6rem;
+    position: relative;
+  }
+  .review-stars { color: var(--saffron); font-size: 1rem; margin-bottom: 0.8rem; }
+  .review-text {
+    font-size: 0.93rem;
+    color: var(--charcoal-soft);
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .reviewer-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--saffron);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .reviewer-name { font-weight: 500; font-size: 0.9rem; color: var(--charcoal); }
+  .reviewer-role { font-size: 0.78rem; color: var(--muted); }
+
+  .google-rating {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 3rem auto 0;
+  }
+  .google-rating .big-rating {
+    font-family: var(--font-head);
+    font-size: 3.5rem;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+  .google-rating p { font-size: 0.85rem; color: var(--muted); margin-top: 0.4rem; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-info-list { margin-top: 2rem; }
+  .contact-info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+  .contact-info-icon {
+    width: 44px; height: 44px; min-width: 44px;
+    background: var(--cream);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .contact-info-text strong {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 3px;
+  }
+  .contact-info-text span {
+    font-size: 0.95rem;
+    color: var(--charcoal-soft);
+  }
+  .contact-info-text a {
+    color: var(--charcoal-soft);
+    text-decoration: none;
+  }
+  .contact-info-text a:hover { color: var(--saffron); }
+
+  .hours-box {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    margin-top: 1.8rem;
+  }
+  .hours-box h4 {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    margin-bottom: 0.8rem;
+    color: var(--charcoal);
+  }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    color: var(--charcoal-soft);
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .open-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(39,174,96,0.14);
+    color: #27ae60;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .map-embed {
+    width: 100%;
+    height: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal-soft);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 2.2rem 5%;
+    font-size: 0.84rem;
+  }
+  footer a { color: var(--saffron-light); text-decoration: none; }
+  .footer-logo {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .footer-divider {
+    width: 40px; height: 2px;
+    background: var(--saffron);
+    margin: 1rem auto;
+    border-radius: 2px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    :root { --section-gap: 64px; }
+
+    .nav-links {
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(26,26,26,0.98);
+      flex-direction: column;
+      gap: 0;
+      padding: 1rem 0;
+      display: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li a { padding: 12px 5%; display: block; font-size: 0.9rem; }
+    .hamburger { display: flex; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-image-stack { height: 300px; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    .stats-bar { gap: 0; }
+    .stat-item { min-width: 50%; max-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .stat-item:last-child, .stat-item:nth-last-child(-n+2):nth-child(odd):last-child { border-bottom: none; }
+  }
+
+  /* placeholder for menu images if no real img */
+  .food-placeholder {
+    width: 100%;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="logo">
+    Kaka Hotel
+    <span>Minchinabad</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Open 24 Hours · Minchinabad, Punjab</div>
+    <h1>Taste That Feels Like <em>Home</em></h1>
+    <p>Hot daal, tender mutton, and fresh-off-the-tawa roti — the kind of food that makes you stop the car and stay a while.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+      <a href="#contact" class="btn btn-outline">Find Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <span class="stat-number">24/7</span>
+    <span class="stat-label">Always Open</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">4.0★</span>
+    <span class="stat-label">Google Rating</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">81+</span>
+    <span class="stat-label">Happy Reviews</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">100%</span>
+    <span class="stat-label">Fresh Daily</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-stack reveal">
+      <img
+        class="about-img-main"
+        src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=600&q=80"
+        alt="Freshly cooked Pakistani food at Kaka Hotel"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
+      <img
+        class="about-img-accent"
+        src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=400&q=80"
+        alt="Traditional dhaba cooking"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
+      <div class="about-badge-float">
+        <strong>★ 4.0</strong>
+        Rated on<br>Google
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">A Dhaba Built on Good Food & Honest Prices</h2>
+      <p class="section-desc">
+        Kaka Hotel has been a familiar stop on the Bahawalnagar–Minchinabad Road for travellers, truck drivers, and local families alike. We cook the same way every day — fresh ingredients, simple recipes, and a kitchen that never closes.
+      </p>
+      <p class="section-desc" style="margin-top:1rem;">
+        Whether you're stopping in for a quick cup of chai or sitting down to a full plate of daal gosht, you'll always get something that's made with care and served with warmth.
+      </p>
+      <ul class="about-features">
+        <li>Fresh food cooked every day, no shortcuts</li>
+        <li>Open 24 hours — yes, even at 3am</li>
+        <li>Affordable prices for everyone</li>
+        <li>Located right on the main Minchinabad Road</li>
+        <li>Seating available for families and groups</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title">A Menu You'll Keep Coming Back To</h2>
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="filterMenu('all', this)">All Items</button>
+      <button class="menu-tab" onclick="filterMenu('main', this)">Main Dishes</button>
+      <button class="menu-tab" onclick="filterMenu('daal', this)">Daal & Sabzi</button>
+      <button class="menu-tab" onclick="filterMenu('bread', this)">Bread & Rice</button>
+      <button class="menu-tab" onclick="filterMenu('drinks', this)">Drinks</button>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+
+    <div class="menu-card reveal" data-cat="main">
+      <div class="food-placeholder">🍖</div>
+      <div class="menu-card-body">
+        <h3>Mutton Karahi</h3>
+        <p>Slow-cooked mutton in a rich tomato and ginger masala. This is the dish people drive here for.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 600</span>
+          <span class="tag popular">⭐ Most Loved</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="daal">
+      <div class="food-placeholder">🫕</div>
+      <div class="menu-card-body">
+        <h3>Daal Chana Fry</h3>
+        <p>A hearty plate of chana daal tempered with cumin, red chilli, and a generous tadka of desi ghee.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 180</span>
+          <span class="tag popular">⭐ Best Value</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="main">
+      <div class="food-placeholder">🍛</div>
+      <div class="menu-card-body">
+        <h3>Daal Gosht</h3>
+        <p>Bone-in mutton slow-cooked with lentils until everything melds together into something deeply satisfying.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 450</span>
+          <span class="tag">Classic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="daal">
+      <div class="food-placeholder">🥣</div>
+      <div class="menu-card-body">
+        <h3>Mash Daal</h3>
+        <p>White lentils cooked soft and finished with a light tarka — simple, warming, and just right with roti.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 160</span>
+          <span class="tag">Daily Special</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="main">
+      <div class="food-placeholder">🍗</div>
+      <div class="menu-card-body">
+        <h3>Chicken Karahi</h3>
+        <p>Tender chicken pieces cooked fresh in a wok with tomatoes, green chillies, and aromatic spices.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 500</span>
+          <span class="tag">Karahi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="bread">
+      <div class="food-placeholder">🫓</div>
+      <div class="menu-card-body">
+        <h3>Tandoori Roti</h3>
+        <p>Fresh from the tandoor, slightly charred on the outside and fluffy within. Comes with every meal.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 20</span>
+          <span class="tag">Per Piece</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="bread">
+      <div class="food-placeholder">🍚</div>
+      <div class="menu-card-body">
+        <h3>Plain Rice (Chawal)</h3>
+        <p>Steamed basmati rice, fluffy and light — perfect alongside any curry or daal on the menu.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 120</span>
+          <span class="tag">Full Plate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="drinks">
+      <div class="food-placeholder">☕</div>
+      <div class="menu-card-body">
+        <h3>Doodh Patti Chai</h3>
+        <p>Strong, milky tea brewed the dhaba way — thick, sweet, and just what you need at any hour of the day.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 40</span>
+          <span class="tag popular">⭐ All Day</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal" data-cat="drinks">
+      <div class="food-placeholder">🥛</div>
+      <div class="menu-card-body">
+        <h3>Lassi</h3>
+        <p>Chilled, creamy lassi made fresh. Available sweet or slightly salted — a perfect companion in the heat.</p>
+        <div class="menu-card-footer">
+          <span class="price">Rs. 80</span>
+          <span class="tag">Chilled</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">More Than Just a Meal</h2>
+    <p class="section-desc">
+      We keep things simple and straightforward — good food, fair prices, and a place where you can sit and breathe for a while.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🕐</span>
+      <h3>Open Round the Clock</h3>
+      <p>Hunger doesn't follow a schedule. We're here every hour of every day — weekends, public holidays, and all nights included.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">👨‍👩‍👧‍👦</span>
+      <h3>Family Seating</h3>
+      <p>Enough space for families and small groups. A comfortable setting where you can eat without rushing.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🚛</span>
+      <h3>Traveller Friendly</h3>
+      <p>Right on the main road between Bahawalnagar and Minchinabad — easy to pull over, easy to find, easy to leave with a full stomach.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💰</span>
+      <h3>Budget-Friendly Prices</h3>
+      <p>Good food shouldn't cost a fortune. Our prices are made for everyday people — not just those passing through with deep pockets.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔥</span>
+      <h3>Fresh Cooking Daily</h3>
+      <p>Everything is prepared fresh. No leftover masalas, no shortcuts. If it's on the menu today, it was made today.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🫖</span>
+      <h3>Chai at Any Hour</h3>
+      <p>Our doodh patti is always brewing. Stop in just for chai — nobody will mind, and it'll be worth it every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <p class="section-label">What People Say</p>
+    <h2 class="section-title">Reviews from Real Visitors</h2>
+    <p class="section-desc">These are straight from Google — the kind of honest feedback that keeps us cooking.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Mutton was very delicious and I would recommend it to anyone passing through Minchinabad. A genuinely good stop on the road."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AK</div>
+        <div>
+          <div class="reviewer-name">A. Khan</div>
+          <div class="reviewer-role">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"A low-cost dhaba with tasty local food. I tried the Daal Chana fry and it was genuinely good — real flavours, nothing artificial."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">MR</div>
+        <div>
+          <div class="reviewer-name">M. Raza</div>
+          <div class="reviewer-role">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Amazing taste and the food quality is very fine. This is the kind of place you don't expect but end up coming back to whenever you're in the area."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SB</div>
+        <div>
+          <div class="reviewer-name">S. Bajwa</div>
+          <div class="reviewer-role">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"Good place for eating. Simple, clean, and the food comes out fast. The roti was fresh and the chai was exactly what I needed after a long drive."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">FH</div>
+        <div>
+          <div class="reviewer-name">F. Hussain</div>
+          <div class="reviewer-role">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="google-rating reveal">
+    <div class="big-rating">4.0</div>
+    <div style="color:var(--saffron);font-size:1.3rem;">★★★★☆</div>
+    <p>Based on 81+ Google reviews<br><a href="https://maps.app.goo.gl/ME9MbdbQYmERqSjs8" target="_blank" rel="noopener">View on Google Maps →</a></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Come Find Us</h2>
+      <p class="section-desc">We're easy to reach — right on the main road. Just look for the lights that are always on.</p>
+
+      <div class="contact-info-list">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div class="contact-info-text">
+            <strong>Address</strong>
+            <span>5H56+8G9, Bahawalnagar-Minchinabad Rd,<br>Bhagwanpura, Minchinabad, 62230, Pakistan</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div class="contact-info-text">
+            <strong>Phone</strong>
+            <span><a href="tel:+923049975467">+92 304 9975467</a></span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🕐</div>
+          <div class="contact-info-text">
+            <strong>Hours</strong>
+            <span>Open 24 hours, 7 days a week</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🗺️</div>
+          <div class="contact-info-text">
+            <strong>Google Maps</strong>
+            <span><a href="https://maps.app.goo.gl/ME9MbdbQYmERqSjs8" target="_blank" rel="noopener">View on Google Maps →</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-box">
+        <h4>Opening Hours</h4>
+        <div class="hours-row"><span>Every Day</span> <span class="open-tag">Open 24 Hours</span></div>
+        <div class="hours-row"><span>No closing time, no holidays</span></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3468.3!2d73.5613586!3d30.1582792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919dc2874e88ceb%3A0x9760d820cf33cbde!2sKaka%20Hotel!5e0!3m2!1sen!2spk!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Kaka Hotel location on Google Maps"
+      ></iframe>
+
+      <div style="background:var(--cream);border-radius:10px;padding:1.6rem;text-align:center;">
+        <p style="font-family:var(--font-head);font-size:1.2rem;color:var(--charcoal);margin-bottom:0.5rem;">Ready to visit?</p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;">We're always open. No reservation needed — just show up and we'll take care of the rest.</p>
+        <a href="https://maps.app.goo.gl/ME9MbdbQYmERqSjs8" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Kaka Hotel</span>
+  <div style="font-size:0.82rem;color:rgba(255,255,255,0.35);">Bahawalnagar-Minchinabad Rd, Bhagwanpura, Minchinabad, Pakistan</div>
+  <div class="footer-divider"></div>
+  <p>
+    <a href="tel:+923049975467">+92 304 9975467</a>
+    &nbsp;·&nbsp;
+    <a href="https://maps.app.goo.gl/ME9MbdbQYmERqSjs8" target="_blank" rel="noopener">Google Maps</a>
+    &nbsp;·&nbsp; Open 24/7
+  </p>
+  <p style="margin-top:1rem;color:rgba(255,255,255,0.25);font-size:0.78rem;">
+    Designed &amp; Developed by <span style="color:var(--saffron-light);font-weight:500;">Haseeb Mazhar</span>
+    &nbsp;&nbsp;|&nbsp;&nbsp; &copy; 2025 Kaka Hotel. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  // NAV toggle
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Menu filter
+  function filterMenu(cat, btn) {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>
